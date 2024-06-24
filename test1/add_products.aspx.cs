@@ -14,19 +14,21 @@ namespace test1
 
         }
         protected void Insert_Click(object sendr, EventArgs e)
-        {
-            SqlDataSource1.InsertParameters["prod_name"].DefaultValue =
-           ((TextBox)GridView1.FooterRow.FindControl("name")).Text;
+        { try {
+                SqlDataSource1.InsertParameters["prod_name"].DefaultValue =
+            ((TextBox)GridView1.FooterRow.FindControl("name")).Text;
 
-            SqlDataSource1.InsertParameters["price"].DefaultValue =
-           ((TextBox)GridView1.FooterRow.FindControl("price")).Text;
+                SqlDataSource1.InsertParameters["price"].DefaultValue =
+               ((TextBox)GridView1.FooterRow.FindControl("price")).Text;
 
-            SqlDataSource1.InsertParameters["desc"].DefaultValue =
-           ((TextBox)GridView1.FooterRow.FindControl("desc")).Text;
+                SqlDataSource1.InsertParameters["desc"].DefaultValue =
+               ((TextBox)GridView1.FooterRow.FindControl("desc")).Text;
 
-            SqlDataSource1.InsertParameters["image"].DefaultValue =@"images\"+
-           ((FileUpload)GridView1.FooterRow.FindControl("image")).FileName;
-            SqlDataSource1.Insert();
+                SqlDataSource1.InsertParameters["image"].DefaultValue = @"images\" +
+               ((FileUpload)GridView1.FooterRow.FindControl("image")).FileName;
+                SqlDataSource1.Insert();
+            } catch (Exception exp) { }
+            
         }
     }
 }
